@@ -29,7 +29,7 @@ export default defineConfig({
 	//site: "https://fuwari.vercel.app/",
 	//base: "/",
 	site: "https://yfyblog.github.io/",
-	trailingSlash: "/",
+	trailingSlash: "always",
 	integrations: [
 		tailwind({
 			nesting: true,
