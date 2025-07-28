@@ -23,13 +23,33 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v0
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+deploy:
+  needs: build
+  runs-on: ubuntu-latest
+  environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
+  steps:
+    # 检出代码
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # 设置 Node.js 环境
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    # 安装依赖
+    - name: Install dependencies
+      run: |
+        npm install
+        npm run build
+
+    # 部署到 GitHub Pages
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
+      with:
+        branch: main  # 如果你使用的是不同的分支（例如 gh-pages），请修改为该分支
+        folder: ./dist # 这里是你生成的静态文件夹
