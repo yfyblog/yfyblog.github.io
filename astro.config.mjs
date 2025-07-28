@@ -28,8 +28,8 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 export default defineConfig({
 	//site: "https://fuwari.vercel.app/",
 	//base: "/",
-	site: "https://yufeiyu33.github.io/",
-	trailingSlash: "/my-repo",
+	site: "https://yfyblog.github.io/",
+	trailingSlash: "/",
 	integrations: [
 		tailwind({
 			nesting: true,
