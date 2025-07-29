@@ -102,19 +102,55 @@
 #         branch: gh-pages  # 如果你使用的是 gh-pages 分支
 #         folder: dist  # 确保这是构建产物目录
 
+# name: Deploy Astro site to GitHub Pages
+
+# on:
+#   push:
+#     branches:
+#       - main  # 或你用的主分支名称
+
+# jobs:
+#   build-deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout source
+#         uses: actions/checkout@v3
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 18
+
+#       - name: Install dependencies
+#         run: npm install  # 或 
+
+#       - name: Build Astro site
+#         run: npm run build  # 或 
+
+#       - name: Deploy to GitHub Pages
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./dist
+#           # 添加 .nojekyll 文件避免默认启用 Jekyll
+#           publish_branch: gh-pages
+#           keep_files: true
+
+
 name: Deploy Astro site to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # 或你用的主分支名称
+      - main  # 如果你的主分支不是 main，改成你的分支名
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -122,17 +158,24 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Install dependencies
-        run: npm install  # 或 
+        run: pnpm install
 
       - name: Build Astro site
-        run: npm run build  # 或 
+        run: pnpm run build
+
+      - name: Add .nojekyll
+        run: echo "" > dist/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          # 添加 .nojekyll 文件避免默认启用 Jekyll
           publish_branch: gh-pages
-          keep_files: true
+
