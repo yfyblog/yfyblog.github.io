@@ -91,6 +91,13 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
+      name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4
+      with:
+        artifact_id: ${{ steps.build.outputs.artifact_id }}
+        pages_build_version: ${{ steps.build.outputs.pages_build_version }}
+        branch: gh-pages  # 如果你使用的是 gh-pages 分支
+        folder: dist  # 确保这是构建产物目录
