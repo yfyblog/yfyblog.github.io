@@ -46,4 +46,4 @@ jobs:
             ${{ runner.os }}-node-
       - name: Run Biome
         run: biome ci ./src --reporter=github
-        continue-on-error: true  # 可选: 如果需要继续执行后续步骤，即使 Biome 检查失败
+        continue-on-error: true  # 可选: 如果需要继续执行后续步骤，
