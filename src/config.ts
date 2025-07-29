@@ -98,6 +98,6 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 
 export const commentConfig: CommentConfig = {
 	twikoo: {
-		envId: "https://comment-ashy.vercel.app",
+		envId: "https://incomparable-kangaroo-9d71cf.netlify.app",
 	},
 };
