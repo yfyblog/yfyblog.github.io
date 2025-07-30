@@ -52,8 +52,8 @@ export const navBarConfig: NavBarConfig = {
 
 		// },
 		{
-			name: "GitHub",
-			url: "https://github.com/yufeiyu33/astro_blog", // Internal links should not include the base path, as it is automatically added
+			name: "原来的博客",
+			url: "https://yufeiyu33.github.io/", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
 		},
 	],
@@ -62,7 +62,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "https://blog-yfy.oss-cn-wuhan-lr.aliyuncs.com/202507242023528.jpg", // 大头照
 	name: "yfy", //名字
-	bio: "该学什么好呢", //一句话
+	bio: "我好菜", //一句话
 	links: [
 		{
 			name: "Twitter",
