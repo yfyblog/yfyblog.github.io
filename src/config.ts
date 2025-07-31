@@ -98,6 +98,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 
 export const commentConfig: CommentConfig = {
 	twikoo: {
-		envId: "https://incomparable-kangaroo-9d71cf.netlify.app",
+		envId:
+			"https://incomparable-kangaroo-9d71cf.netlify.app/.netlify/functions/twikoo",
 	},
 };
